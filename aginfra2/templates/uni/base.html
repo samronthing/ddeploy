@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/boot.css' %}">
+    <<link href="https://fonts.googleapis.com/css?family=Audiowide|Bangers|Forum|Kaushan+Script|Unica+One" rel="stylesheet">
+    <!--<link rel="stylesheet" href="{% static 'css/fonts.css' %}">-->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>
+      $(document).ready(function(){
+        $("a").on('click', function(event) {
+
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 800, function(){
+
+              // Add hash (#) to URL when done scrolling (default click behavior)
+              window.location.hash = hash;
+            });
+          } // End if
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+    <title>
+      {% block title %}
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="  background-color:rgba(0,0,0,0.8);">
+      <!--<a class="navbar-brand" style="height:50px; margin-top:5px;font-size:30px; font-family: 'Bangers', cursive; color:white;" href="#">AG Infra Build</a>-->
+      <div class="navbar-brand" style="height:95px;margin:-8px 0 -8px -16px;width:320px;  ">
+          <img src="{% static 'images/logo.png' %}" style="height:150%;margin-left:15px;">
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-text padnav">
+            <a class="nav-link active" style="font-weight:lighter; color:#fff" href="#home"><div class="obut btn-2"><div class="ibut pav">HOME</div></div></a>
+          </li>
+          <li class="nav-item padnav">
+            <a class="nav-link" style="font-weight:lighter; color:#fff" href="#services"><div class="obut btn-2"><div class="ibut pav">SERVICES</div></div></a>
+          </li>
+          <li class="nav-item padnav">
+            <a class="nav-link" style="font-weight:lighter; color:#fff" href="#abt"><div class="obut btn-2"><div class="ibut pav">ABOUT</div></div></a>
+          </li>
+          <li class="nav-item padnav">
+            <a class="nav-link" style="font-weight:lighter; color:#fff" href="#projects"><div class="obut btn-2"><div class="ibut pav">PROJECTS</div></div></a>
+          </li>
+          <!--<li class="nav-item padnav">
+            <a class="nav-link" style="font-weight:lighter; color:#fff" href="#clientd"><div class="obut btn-2"><div class="ibut pav">CATALOGUE</div></div></a>
+          </li>-->
+          <li class="nav-item padnav">
+            <a class="nav-link" style="font-weight:lighter; color:#fff" href="#contact"><div class="obut btn-2"><div class="ibut pav">CONTACT</div></div></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+    {% block body_block %}
+    {% endblock %}
+
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
